@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56627098326693b48b68b55e132c5d07, type: 3}
+  m_Name: DwgPluginSetting
+  m_EditorClassIdentifier: CadToUnity::CadToUnityPlugin.DwgPluginSetting
+  defaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  entitySettings:
+  - rid: 7337738511517220959
+  - rid: 7337738511517220960
+  - rid: 7337738511517220961
+  - rid: 7337738511517220962
+  - rid: 7337738511517220963
+  - rid: 7337738511517220964
+  _entityPrefabs:
+  - type: 0
+    prefab: {fileID: 5695655760975037069, guid: e5d623548767f0449bf6b9ee0958b08f, type: 3}
+  - type: 1
+    prefab: {fileID: 5214606585502110964, guid: bed288ffcc454884e8b9893c14901b4b, type: 3}
+  - type: 2
+    prefab: {fileID: 2296111028216207252, guid: c6f3d98f6a2d38741bdf7ad5d31937d2, type: 3}
+  - type: 3
+    prefab: {fileID: 7808837950331922244, guid: a8a44f7d7f2fdf6498c5e95e89671cdc, type: 3}
+  - type: 4
+    prefab: {fileID: 8268499480329469515, guid: 43aa6d3d2a43a4143b5f5a90a8a61429, type: 3}
+  - type: 5
+    prefab: {fileID: 6851274017077912542, guid: 0b170483ef534fd4ebcbaced0ff67f24, type: 3}
+  - type: 200
+    prefab: {fileID: 5695655760975037069, guid: e5d623548767f0449bf6b9ee0958b08f, type: 3}
+  references:
+    version: 2
+    RefIds:
+    - rid: 7337738511517220959
+      type: {class: LineSetting, ns: CadToUnityPlugin, asm: CadToUnity}
+      data:
+        type: 0
+        useCustomColor: 1
+        color: {r: 0, g: 0, b: 0, a: 1}
+        defaultColor: {r: 0, g: 0, b: 0, a: 0}
+        lineWidth: 0.01
+        material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - rid: 7337738511517220960
+      type: {class: CurveSetting, ns: CadToUnityPlugin, asm: CadToUnity}
+      data:
+        type: 2
+        useCustomColor: 1
+        color: {r: 0, g: 0, b: 0, a: 1}
+        defaultColor: {r: 0, g: 0, b: 0, a: 0}
+        lineWidth: 0.01
+        material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+        segment: 20
+    - rid: 7337738511517220961
+      type: {class: LineSetting, ns: CadToUnityPlugin, asm: CadToUnity}
+      data:
+        type: 1
+        useCustomColor: 1
+        color: {r: 0, g: 0, b: 0, a: 1}
+        defaultColor: {r: 0, g: 0, b: 0, a: 0}
+        lineWidth: 0.1
+        material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - rid: 7337738511517220962
+      type: {class: CurveSetting, ns: CadToUnityPlugin, asm: CadToUnity}
+      data:
+        type: 3
+        useCustomColor: 1
+        color: {r: 0, g: 0, b: 0, a: 1}
+        defaultColor: {r: 0, g: 0, b: 0, a: 0}
+        lineWidth: 0.1
+        material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+        segment: 20
+    - rid: 7337738511517220963
+      type: {class: TextSetting, ns: CadToUnityPlugin, asm: CadToUnity}
+      data:
+        type: 4
+        useCustomColor: 0
+        color: {r: 0, g: 0, b: 0, a: 0}
+        defaultColor: {r: 0, g: 0, b: 0, a: 0}
+        fontSize: 30
+    - rid: 7337738511517220964
+      type: {class: TextSetting, ns: CadToUnityPlugin, asm: CadToUnity}
+      data:
+        type: 5
+        useCustomColor: 0
+        color: {r: 0, g: 0, b: 0, a: 0}
+        defaultColor: {r: 0, g: 0, b: 0, a: 0}
+        fontSize: 10
