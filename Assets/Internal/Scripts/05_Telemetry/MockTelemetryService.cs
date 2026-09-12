@@ -10,11 +10,11 @@ public class MockTelemetryService : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
     }
 
-    // 특정 설비에 대한 실시간 수신 시작
-    public void StartStreaming(Facility facility, Action<object> onDataReceived)
+    public void StartStreaming(Facility facility, Action<DataCommon> onDataReceived)
     {
         StopStreaming();
         _telemetryCoroutine = StartCoroutine(CoStreamData(facility, onDataReceived));
@@ -29,37 +29,36 @@ public class MockTelemetryService : MonoBehaviour
         }
     }
 
-    private IEnumerator CoStreamData(Facility facility, Action<object> onDataReceived)
+    private IEnumerator CoStreamData(Facility facility, Action<DataCommon> onDataReceived)
     {
-        var wait = new WaitForSeconds(1.0f);
+        var wait = new WaitForSeconds(1.0f); // 1초마다 갱신
 
         while (true)
         {
-            if (facility.facilityType == FacilityType.TempSensor)
+            var data = new DataCommon
             {
-                // 18℃ ~ 35℃ 사이 난수 생성 (30도 이상이면 경고용)
-                var tempData = new TempData
-                {
-                    DeviceID = facility.facilityId,
-                    DeviceName = facility.facilityName,
-                    Temperature = UnityEngine.Random.Range(20.0f, 33.0f),
-                    Humidity = UnityEngine.Random.Range(40.0f, 65.0f)
-                };
-                onDataReceived?.Invoke(tempData);
-            }
-            else if (facility.facilityType == FacilityType.CCTV)
+                deviceId = facility.facilityId,
+                deviceName = facility.facilityName,
+                deviceType = (int)facility.facilityType,
+                isOnline = true
+            };
+
+            switch (facility.facilityType)
             {
-                var cctvData = new CctvData
-                {
-                    DeviceID = facility.facilityId,
-                    DeviceName = facility.facilityName,
-                    StreamUrl = "localhost:8080/test",
-                    ResolutionH = 1080,
-                    ResolutionW = 1920
-                };
-                onDataReceived?.Invoke(cctvData);
+                case FacilityType.TempSensor:
+                    // 18.0℃ ~ 35.0℃ 범위 난수 (소수점 1자리)
+                    data.Temperature = Mathf.Round(UnityEngine.Random.Range(18.0f, 35.0f) * 10f) / 10f;
+                    data.Humidity = Mathf.Round(UnityEngine.Random.Range(40.0f, 75.0f) * 10f) / 10f;
+                    break;
+
+                case FacilityType.CCTV:
+                    data.StreamUrl = "rtsp://192.168.1.100:554/live";
+                    data.ResolutionW = 1920;
+                    data.ResolutionH = 1080;
+                    break;
             }
 
+            onDataReceived?.Invoke(data);
             yield return wait;
         }
     }
